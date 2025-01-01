@@ -78,6 +78,7 @@ staging_protocols = {
 }
 
 experimental_protocols = {
+	'xx-cutouts': ['v1'],
 	'xx-input-method': ['v2'],
 	'xx-keyboard-filter': ['v1'],
 	'xx-session-management': ['v1'],
