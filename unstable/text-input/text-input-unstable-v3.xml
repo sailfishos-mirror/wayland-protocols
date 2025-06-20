@@ -283,15 +283,18 @@
         empty values get applied, subsequent attempts to change them may have
         no effect.
 
-        As of version 2, the values sent with this request are not used
-        immediately after they are applied to the text-input state.
+        As of version 2, the zwp_text_input_v3.commit request does not apply
+        values sent with this request. Instead, it stores them in a separate
+        "committed" area. The committed values, if still valid, get applied on
+        the next wl_surface.commit request on the surface with text-input focus.
+        Both committed and applied values get invalidated on:
 
-        After the pending state is applied with the zwp_text_input_v3.commit
-        request, the following wl_surface.commit request on the surface with
-        text-input focus will cause the values to become active.
+        - the next committed enable or disable request, or
+        - a change of the focused surface of the text-input (leave or enter events).
 
-        If the surface with text-input focus changes before a wl_surface.commit
-        request is sent, the values are discarded.
+        This double stage application allows the compositor to position
+        the input method popup in the same frame as the contents
+        of the text on the surface are updated.
       </description>
       <arg name="x" type="int"/>
       <arg name="y" type="int"/>
