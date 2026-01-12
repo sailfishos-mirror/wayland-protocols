@@ -97,6 +97,11 @@ feedback parameters is received, they should perform these steps again. They
 should detect when the optimal allocation parameters didn't change (same
 device/format/modifier/flags) to avoid needlessly re-allocating their buffers.
 
+Note that the compositor is free not to re-send the ``format_table`` event for a
+given surface feedback object if the table contents haven't changed since last
+time. The client needs to keep around the last format table until it destroys
+the surface feedback object.
+
 For compositors
 ---------------
 
@@ -107,6 +112,10 @@ to both ``get_default_feedback`` and ``get_surface_feedback``. Set the
 ``tranche_target_device`` set to the rendering device and all of the DRM
 format/modifier pairs supported by the rendering API. Do not set the
 ``scanout`` flag in the ``tranche_flags`` event.
+
+In the following advanced cases, the compositor is free not to re-send the
+``format_table`` event for a given surface feedback object if the table contents
+haven't changed since last time.
 
 Some compositors may support direct scan-out for full-screen surfaces. These
 compositors can re-send the feedback parameters when a surface becomes
