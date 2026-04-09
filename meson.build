@@ -9,7 +9,7 @@ wayland_protocols_version = meson.project_version()
 fs = import('fs')
 
 dep_scanner = dependency('wayland-scanner',
-    version: get_option('tests') ? '>=1.23.0' : '>=1.20.0',
+    version: get_option('tests') ? '>=1.25.0' : '>=1.20.0',
     native: true,
     fallback: 'wayland'
 )
