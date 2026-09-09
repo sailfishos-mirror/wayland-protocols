@@ -88,6 +88,7 @@ staging_protocols = {
 
 experimental_protocols = {
 	'xx-cutouts': {'v1': []},
+	'xx-hotkey': {'v1': []},
 	'xx-input-method': {'v2': []},
 	'xx-keyboard-filter': {'v1': [
 		'experimental/xx-input-method/xx-input-method-v2.xml',
